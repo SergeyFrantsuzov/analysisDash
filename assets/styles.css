@@ -1,0 +1,231 @@
+/*#9E0000*/
+/*#FF7B5A*/
+/*#59B7D3*/
+/*#005069*/
+/*#8E2B00*/
+/*#006214*/
+/*#0051D6*/
+/*#0062A2*/
+
+
+
+
+
+
+
+
+
+body{
+  margin: 0;
+  background: #222831;
+}
+
+#main{
+  margin-top: 60px;
+  margin-left: 200px;
+    border: 1px solid white
+}
+
+#capillary_model{
+  margin-top: 20px;
+  margin-left: 200px;
+    border: 1px solid white
+}
+
+
+#menu{
+  /*margin-top: 60px;*/
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  background: #336B87;
+  z-index: 1000;
+  border: 1px solid white;
+}
+
+
+#fig_sw_pc{
+  background: #e8e8e8;
+
+}
+
+
+
+#rcal_cp_plots{
+  width: 904px;
+  height: 826px;
+  text-align: center;
+  margin: 10px;
+  background: white;
+  border: 1px solid black;
+  padding: 10px 10px ;
+  /*box-shadow: 2px 2px 2px lightgrey;*/
+  /*display: inline-block;*/
+  position: relative;
+}
+
+#ff_ri_plots{
+  background: #e8e8e8;
+  width: 740px;
+  height: 500px;
+  /*border: 1px solid black;*/
+  padding: 10px 10px ;
+  position: absolute;
+  left:934px;
+  top: 0px;
+  margin: 10px;
+}
+
+#por_ff{
+  width: 360px;
+  height: 470px;
+  /*border: 1px solid black;*/
+  float: left;
+}
+
+#sw_ri{
+  width: 360px;
+  height: 470px;
+  border: 1px solid black;
+overflow: hidden;
+
+}
+
+
+#por_perm_toggleswitch{
+
+/*float: right;*/
+  position: absolute;
+  right: 20px;
+  top:0px;
+  z-index: 1000;
+}
+
+#toggleswitch{
+
+
+}
+
+
+#por_perm{
+  width: 450px;
+  height: 400px;
+  float: left;
+  /*border: 1px solid black;*/
+
+}
+#perm_swirr{
+  width: 450px;
+  height: 400px;
+  float: right;
+  /*overflow: hidden;*/
+    /*border: 1px solid black;*/
+}
+#sw_cp{
+  width: 450px;
+  height: 400px;
+    overflow: hidden;
+
+    /*border: 1px solid black;*/
+}
+
+#perm_calc_dist{
+  width: 450px;
+  height: 400px;
+    overflow: hidden;
+
+    /*border: 1px solid black;*/
+}
+
+#text_area{
+
+  width: 450px;
+  height: 200px;
+  border: 1px solid black;
+  position: absolute;
+  bottom: 100px;
+  right: 10px;
+
+}
+
+/*#plots:hover{*/
+/*  !*width: 1000px;*!*/
+/*  !*height: 800px;*!*/
+/*  !*text-align: center;*!*/
+/*  !*margin-left: 30%;*!*/
+/*   background: #ff5d2f;*/
+/*  !*border: 1px solid black*!*/
+/*}*/
+
+.color_filter{
+  /*display: inline;*/
+
+}
+
+#visualization_data{
+  width: 400px;
+  /*text-align: center;*/
+  /*margin-left: 30%;*/
+  /*border: 1px solid black;*/
+
+}
+#visualization_data2{
+  width: 400px;
+  /*text-align: center;*/
+  /*margin-left: 30%;*/
+  border: 1px solid black;
+
+}
+
+#bottom{
+  width: 400px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  /*margin: auto;*/
+  /*margin-left: 30%;*/
+  border: 1px solid black
+}
+#table{
+  width: 800px;
+  height: 400px;
+  position: absolute;
+  left: 830px;
+  top: 0px;
+  text-align: center;
+  margin:10px;
+  background: #90AFC5;
+  border: 1px solid black;
+}
+#map{
+  width: 400px;
+  height: 350px;
+  position: absolute;
+  left: 1230px;
+  top: 420px;
+  /*right: 10px;*/
+  /*bottom: 5px;*/
+  /*margin: left bottom;*/
+  background: #90AFC5;
+    margin:10px;
+  text-align: center;
+  /*margin-left: 30%;*/
+  border: 1px solid black;
+}
+#statistic {
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    left: 830px;
+    top: 420px;
+    /*right: 10px;*/
+    /*bottom: 5px;*/
+    /*margin: left bottom;*/
+    text-align: center;
+    margin: 10px;
+    background: #90AFC5;
+    /*margin-left: 30%;*/
+    border: 1px solid black;
+}
