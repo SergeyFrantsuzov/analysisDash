@@ -68,15 +68,15 @@ sw_ri = 'Sw'
 
 #  Объяснение данных строк пока опускается, будет объяснено далее
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-appAnalysis = dash.Dash(__name__, title='Analysis')  # , external_stylesheets=external_stylesheets)
+analysisDashApp = dash.Dash(__name__, title='Analysis')  # , external_stylesheets=external_stylesheets)
 # Путь к результатам исследования керна
 # os.chdir('D:\\!_Work_project\\!_Data\\Fields\\Zapadno-Zimnee\\Core\\NewData\\For_Python')
 # server = appDashGI.server
 # print(os.getcwd())
 # fileList = os.listdir(path=".")
 # Данные RCAL
-pathData = os.getcwd() + "\\" + "data"
-
+pathData = os.getcwd() + "\\" + "data" + "\\"
+# pathData = "E:\\Programming\\02042021\Programming\\PyCharmProjects\\PM\\DashBoards\\analysisDash\\data"
 # print(pathData)
 dfNames, df = create_dataframe(pathData)
 
@@ -285,7 +285,7 @@ fig_Dist_Perm = go.Figure(
 
 # endregion
 
-appAnalysis.layout = html.Div(children=[
+analysisDashApp.layout = html.Div(children=[
 
     html.Div([
 
@@ -321,7 +321,7 @@ appAnalysis.layout = html.Div(children=[
                 daq.ToggleSwitch(
                     id='toggleswitch',
                     # labelPosition='top',
-                    label='Por/Perm layout',
+                    # label='Por/Perm layout',
 
                     # style={'position': 'absolute', 'top': 0, 'right': 50, 'z-index': 9999},
                     value=True
@@ -370,7 +370,10 @@ appAnalysis.layout = html.Div(children=[
         ], id='rcal_cp_plots'),
 
         # endregion
-        html.Div([
+        
+    ], id='main', className='container'),
+    
+    html.Div([
             # region Color_filter
             html.Div([
                 # html.Label('Color'),
@@ -399,8 +402,8 @@ appAnalysis.layout = html.Div(children=[
                 # config=dict(responsive=True),
                 figure=fig_SW_RI
             ),
-        ], id='ff_ri_plots')
-    ], id='main', className='container'),
+        ], id='ff_ri_plots', className='container'),
+    
     html.Div([
         dcc.Graph(
             id='sw_cp',
@@ -417,7 +420,7 @@ appAnalysis.layout = html.Div(children=[
 ])
 
 
-@appAnalysis.callback(
+@analysisDashApp.callback(
     [Output('por_perm', 'figure'),
      Output('perm_swirr', 'figure')],
     [Input('visualization_data', 'value'),
@@ -425,7 +428,7 @@ appAnalysis.layout = html.Div(children=[
     State('equationsText', 'value')
 )
 # # Input('point-mode', 'value')])
-def update_graph(visual_data, n_clicks, equationsText):
+def update_rcal_graph(visual_data, n_clicks, equationsText):
     df_rcal = df[dfNames.index('RCAL')]
     if visual_data in [wellColumnName, zonesColumnName]:
         data_temp_por_perm = [go.Scatter(x=df_rcal[df_rcal[visual_data] == i][porosityColumnName].values,
@@ -506,6 +509,7 @@ def update_graph(visual_data, n_clicks, equationsText):
                        linecolor='black'
                        ),
             showlegend=True,
+            legend_title_text=visual_data,
             margin={'l': 0, 'b': 0, 't': 40, 'r': 0},
             # margin=dict(l=20, b=20, t=40, r=20),
             template='plotly_white'
@@ -539,7 +543,7 @@ def update_graph(visual_data, n_clicks, equationsText):
     return figPorosityPermabilityUpdate, figPermeabilityIrreducibleWaterUpdate
 
 
-@appAnalysis.callback(
+@analysisDashApp.callback(
 
     Output('perm_calc_dist', 'figure'),
     Input('applyEquations', 'n_clicks'),
@@ -608,8 +612,5 @@ def update_dist_graph(n_clicks, figData, textEquation):
         return distHist
 
 
-#
-
-
 if __name__ == '__main__':
-    appAnalysis.run_server(debug=True, port=8053)
+    analysisDashApp.run_server(debug=True, port=1235)

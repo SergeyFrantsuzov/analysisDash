@@ -22,13 +22,14 @@ body{
 
 #main{
   margin-top: 60px;
-  margin-left: 200px;
+  margin-left: 201px;
     border: 1px solid white
 }
 
+
 #capillary_model{
   margin-top: 20px;
-  margin-left: 200px;
+  margin-left: 201px;
     border: 1px solid white
 }
 
@@ -63,16 +64,17 @@ body{
   /*box-shadow: 2px 2px 2px lightgrey;*/
   /*display: inline-block;*/
   position: relative;
+
 }
 
 #ff_ri_plots{
-  background: #e8e8e8;
+  background: white;
   width: 740px;
   height: 500px;
   /*border: 1px solid black;*/
   padding: 10px 10px ;
-  position: absolute;
-  left:934px;
+  /* position: absolute; */
+  left:200px;
   top: 0px;
   margin: 10px;
 }
@@ -80,14 +82,14 @@ body{
 #por_ff{
   width: 360px;
   height: 470px;
-  /*border: 1px solid black;*/
+  /* border: 1px solid black; */
   float: left;
 }
 
 #sw_ri{
   width: 360px;
   height: 470px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 overflow: hidden;
 
 }
