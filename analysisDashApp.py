@@ -99,6 +99,7 @@ analysisDashApp.layout = html.Div(children=[
             html.A('RCAL',
  
                 href = "#rcal_analysis",
+                id="rcal_analysis_ref"
         ),
         html.A('RES',
 
@@ -133,24 +134,7 @@ analysisDashApp.layout = html.Div(children=[
                         labelStyle={'display': 'inline-block'}
                     ),
                 ], className='color_filter'),
-                # endregion
-                # region ToggleSwitch
-                html.Div([
-                    # html.Label('Por'),
-                    daq.ToggleSwitch(
-                        id='toggleswitch',
-                        # labelPosition='top',
-                        # label='Por/Perm layout',
 
-                        # style={'position': 'absolute', 'top': 0, 'right': 50, 'z-index': 9999},
-                        value=True
-                    ),
-                    # html.Label('Perm'),
-
-                ], id='por_perm_toggleswitch'),
-
-                # endregion
-                # region Graph
                 dcc.Graph(
                     id='phi_perm',
                     # config=dict(responsive=True),
@@ -161,15 +145,34 @@ analysisDashApp.layout = html.Div(children=[
                             },
                     className='plot'
                 ),
-                dcc.Graph(
-                    id='phi_perm_swirr',
-                    # config=dict(responsive=True),
-                    figure=figPermeabilityIrreducibleWater,
-                    config={'displayModeBar': False,
-                            # 'queueLength': 0
-                            },
-                    className='plot'
-                ),
+                
+                html.Div([
+                #     html.Div([
+                #     # html.Label('Por'),
+                #         daq.ToggleSwitch(
+                #             id='toggleswitch',
+                #             # labelPosition='top',
+                #             # label='Por/Perm layout',
+
+                #             # style={'position': 'absolute', 'top': 0, 'right': 50, 'z-index': 9999},
+                #             value=True
+                #         ),
+                #     # html.Label('Perm'),
+
+                # ], id='por_perm_toggleswitch'),
+                    dcc.Graph(
+                        id='phi_perm_swirr',
+                        # config=dict(responsive=True),
+                        figure=figPermeabilityIrreducibleWater,
+                        config={'displayModeBar': False,
+                                # 'queueLength': 0
+                                },
+                        # className='plot'
+                    ),
+
+                ], id='phi_perm_swirr_toggle'),
+
+
                 dcc.Graph(
                     id='error_dist',
                     # config=dict(responsive=True),
