@@ -93,17 +93,21 @@ fig_SW_RI = layouts.RISwLayout()
 fig_Dist_Perm = layouts.PermHistLayout()
 
 analysisDashApp.layout = html.Div(children=[
+    html.Header([
 
-    html.Div([
         html.Div([
-            html.A(
-                title = 'RCAL',
+            html.A('RCAL',
+ 
                 href = "#rcal_analysis",
+        ),
+        html.A('RES',
+
+                href = "#res_analysis",
         )
 
         ], id='menu', className='menu')
 
-    ], id='header'),
+    ]),
     html.Div([
 
     ], className='statistics'),
@@ -209,17 +213,17 @@ analysisDashApp.layout = html.Div(children=[
                     ], className='color_filter'),
                     # endregion
                     dcc.Graph(
-                        id='por_ff',
+                        id='ff_phi',
                         # config=dict(responsive=True),
                         figure=fig_Por_FF
 
                     ),
                     dcc.Graph(
-                        id='sw_ri',
+                        id='ri_sw',
                         # config=dict(responsive=True),
                         figure=fig_SW_RI
                     ),
-                ], id='ff_ri_plots', className='container'),
+                ], id='res_analysis', className='res_box'),
             
             html.Div([
                 dcc.Graph(
@@ -232,7 +236,7 @@ analysisDashApp.layout = html.Div(children=[
                             }
                 ),
 
-            ], id='capillary_model', className='container')
+            ], id='capillary_model', className='cm_box')
         ], className='workspace')
     ], className='wrapper')
 ])
