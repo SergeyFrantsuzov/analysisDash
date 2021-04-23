@@ -20,6 +20,18 @@ body{
   background: #222831;
 }
 
+#menu{
+  /*margin-top: 60px;*/
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  background: #336B87;
+  z-index: 1000;
+  border: 1px solid white;
+}
+
+
 #main{
   margin-top: 60px;
   margin-left: 201px;
@@ -34,16 +46,7 @@ body{
 }
 
 
-#menu{
-  /*margin-top: 60px;*/
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  overflow: hidden;
-  background: #336B87;
-  z-index: 1000;
-  border: 1px solid white;
-}
+
 
 
 #fig_sw_pc{
@@ -201,21 +204,7 @@ overflow: hidden;
   background: #90AFC5;
   border: 1px solid black;
 }
-#map{
-  width: 400px;
-  height: 350px;
-  position: absolute;
-  left: 1230px;
-  top: 420px;
-  /*right: 10px;*/
-  /*bottom: 5px;*/
-  /*margin: left bottom;*/
-  background: #90AFC5;
-    margin:10px;
-  text-align: center;
-  /*margin-left: 30%;*/
-  border: 1px solid black;
-}
+
 #statistic {
     width: 400px;
     height: 350px;

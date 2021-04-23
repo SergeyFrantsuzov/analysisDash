@@ -84,145 +84,13 @@ figPorosityPermability = layouts.PorPermLayout()
 
 figPermeabilityIrreducibleWater = layouts.PermSwirrLayout()
 
+fig_PC_SW = layouts.PCSWLayout()
 
-# region figure of Pc-Water Saturation Plot
-fig_PC_SW = go.Figure(
-    # id='fig_sw_pc',
-    data=[
-        # go.Scatter(x=df_cp[df_cp[sampleID] == i][waterSaturationCP].values,
-        #              y=df_cp[df_cp[sampleID] == i][capillaryPressure].values,
-        #              mode='markers+lines',
-        #              name=i,
-        #              customdata=df_cp[df_cp[sampleID] == i],
-        #              hovertemplate="<br>".join([
-        #                  "Sw: %{x:.3f}",
-        #                  "Pc: %{y:.3f}",
-        #                  "Perm: %{customdata[8]}",
-        #                  "Well: %{customdata[0]}",
-        #                  "Zones: %{customdata[14]}",
-        #
-        #              ]),
-        #              ) for i in df_cp[sampleID].unique()
-    ],
-    # region layout
-    layout=go.Layout(
-        # title=dict(text='Pc-Water Saturation'),
-        xaxis=dict(title='Water Saturation, dec',
-                   range=[0, 100],
-                   showline=True,
-                   linewidth=2,
-                   linecolor='black'),
-        yaxis=dict(
-            # type='log',
-            title='Pc, bar',
-            range=[0, 30],
-            showline=True,
-            linewidth=2,
-            linecolor='black'
-        ),
-        margin={'l': 0, 'b': 0, 't': 40, 'r': 0},
-        # margin=dict(l=20, b=20, t=40, r=20),
-        template='plotly_white',
-        # height=400,
-        # width=500
-    ))
-# endregion
+fig_Por_FF = layouts.FFPorLayout()
 
-# region figure FF-Porosity
-fig_Por_FF = go.Figure(
-    data=[
+fig_SW_RI = layouts.RISwLayout()
 
-    ],
-    # region layout
-    layout=go.Layout(
-        # title=dict(text='Pc-Water Saturation'),
-        xaxis=dict(title='Porosity, dec',
-                   range=[-2, -0.3],
-                   type="log",
-                   showline=True,
-                   linewidth=2,
-                   linecolor='black'),
-        yaxis=dict(
-            # type='log',
-            title='Formation Factor',
-            range=[0, 3],
-            type="log",
-            showline=True,
-            linewidth=2,
-            linecolor='black'
-        ),
-        margin={'l': 0, 'b': 0, 't': 0, 'r': 40},
-        # margin=dict(l=20, b=20, t=40, r=20),
-        template='plotly_white',
-        # height=400,
-        # width=500
-    ))
-
-# endregion
-
-# region figure RI-Water Saturation
-fig_SW_RI = go.Figure(
-    data=[
-
-    ],
-    # region layout
-    layout=go.Layout(
-        # title=dict(text='Pc-Water Saturation'),
-        xaxis=dict(title='Water Saturation, dec',
-                   range=[-1, 0],
-                   type="log",
-                   showline=True,
-                   linewidth=2,
-                   linecolor='black'),
-        yaxis=dict(
-            # type='log',
-            title='Resistivity Index',
-            range=[0, 2],
-            type="log",
-            showline=True,
-            linewidth=2,
-            linecolor='black'
-        ),
-        margin={'l': 0, 'b': 0, 't': 0, 'r': 40},
-        # margin=dict(l=20, b=20, t=40, r=20),
-        template='plotly_white',
-        # height=400,
-        # width=500
-    ))
-
-# endregion
-
-# region Hist Permeability destribution
-fig_Dist_Perm = go.Figure(
-    data=[
-
-    ],
-    # region layout
-    layout=go.Layout(
-        # title=dict(text='Pc-Water Saturation'),
-        xaxis=dict(title='Permeability',
-                   range=[-1, 4],
-                   # type="log",
-                   showline=True,
-                   linewidth=2,
-                   linecolor='black'),
-        yaxis=dict(
-            # type='log',
-            title='Count',
-            range=[0, 100],
-            # type="log",
-            showline=True,
-            linewidth=2,
-            linecolor='black'
-        ),
-        margin={'l': 0, 'b': 0, 't': 0, 'r': 40},
-        # margin=dict(l=20, b=20, t=40, r=20),
-        template='plotly_white',
-        # height=400,
-        # width=500
-    ))
-
-# endregion
+fig_Dist_Perm = layouts.PermHistLayout()
 
 analysisDashApp.layout = html.Div(children=[
 
@@ -230,8 +98,12 @@ analysisDashApp.layout = html.Div(children=[
 
     ], id='header'),
     html.Div([
+        html.A(
+            title='RCAL',
+            href = "#rcal_analysis",
+        )
 
-    ], id='menu'),
+    ], id='menu', className='menu'),
 
     html.Div([
 
