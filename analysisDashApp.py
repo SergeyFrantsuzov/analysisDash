@@ -95,145 +95,151 @@ fig_Dist_Perm = layouts.PermHistLayout()
 analysisDashApp.layout = html.Div(children=[
 
     html.Div([
+        html.Div([
+            html.A(
+                title = 'RCAL',
+                href = "#rcal_analysis",
+        )
+
+        ], id='menu', className='menu')
 
     ], id='header'),
     html.Div([
-        html.A(
-            title='RCAL',
-            href = "#rcal_analysis",
-        )
 
-    ], id='menu', className='menu'),
-
+    ], className='statistics'),
     html.Div([
-
         html.Div([
 
-            # region Color_filter
-            html.Div([
-                # html.Label('Color'),
-                dcc.RadioItems(
-                    id='visualization_data',
-
-                    options=[
-                        {'label': 'All Data', 'value': 'All_Data'},
-                        {'label': 'Wells', 'value': wellColumnName},
-                        {'label': 'Zones', 'value': zonesColumnName},
-                        {'label': 'Researches', 'value': 'Research_type'},
-                    ],
-                    value='All_Data',
-                    labelStyle={'display': 'inline-block'}
-                ),
-            ], className='color_filter'),
-            # endregion
-            # region ToggleSwitch
-            html.Div([
-                # html.Label('Por'),
-                daq.ToggleSwitch(
-                    id='toggleswitch',
-                    # labelPosition='top',
-                    # label='Por/Perm layout',
-
-                    # style={'position': 'absolute', 'top': 0, 'right': 50, 'z-index': 9999},
-                    value=True
-                ),
-                # html.Label('Perm'),
-
-            ], id='por_perm_toggleswitch'),
-
-            # endregion
-            # region Graph
-            dcc.Graph(
-                id='por_perm',
-                # config=dict(responsive=True),
-                figure=figPorosityPermability,
-                # figure=go.Figure(),
-                config={'displayModeBar': False,
-                        # 'queueLength': 0
-                        }
-            ),
-            dcc.Graph(
-                id='perm_swirr',
-                # config=dict(responsive=True),
-                figure=figPermeabilityIrreducibleWater,
-                config={'displayModeBar': False,
-                        # 'queueLength': 0
-                        }
-            ),
-            dcc.Graph(
-                id='perm_calc_dist',
-                # config=dict(responsive=True),
-                figure=fig_Dist_Perm,
-                config={'displayModeBar': False,
-                        # 'queueLength': 0
-                        }
-            ),
 
             html.Div([
-                dcc.Textarea(
-                    id='equationsText',
-                    value='perm=np.exp(0.01*phi**2.2-4.5)\nswirr=53/(k+0.025)**0.17',
-                    style={'width': '100%', 'height': 200},
-                ),
-                html.Button('Apply', id='applyEquations', n_clicks=0),
-                html.Div(id='textarea-state-example-output', style={'whiteSpace': 'pre-line'})
-            ], id='text_area')
-        ], id='rcal_cp_plots'),
 
-        # endregion
-        
-    ], id='main', className='container'),
-    
-    html.Div([
-            # region Color_filter
+                # region Color_filter
+                html.Div([
+                    # html.Label('Color'),
+                    dcc.RadioItems(
+                        id='visualization_data',
+
+                        options=[
+                            {'label': 'All Data', 'value': 'All_Data'},
+                            {'label': 'Wells', 'value': wellColumnName},
+                            {'label': 'Zones', 'value': zonesColumnName},
+                            {'label': 'Researches', 'value': 'Research_type'},
+                        ],
+                        value='All_Data',
+                        labelStyle={'display': 'inline-block'}
+                    ),
+                ], className='color_filter'),
+                # endregion
+                # region ToggleSwitch
+                html.Div([
+                    # html.Label('Por'),
+                    daq.ToggleSwitch(
+                        id='toggleswitch',
+                        # labelPosition='top',
+                        # label='Por/Perm layout',
+
+                        # style={'position': 'absolute', 'top': 0, 'right': 50, 'z-index': 9999},
+                        value=True
+                    ),
+                    # html.Label('Perm'),
+
+                ], id='por_perm_toggleswitch'),
+
+                # endregion
+                # region Graph
+                dcc.Graph(
+                    id='phi_perm',
+                    # config=dict(responsive=True),
+                    figure=figPorosityPermability,
+                    # figure=go.Figure(),
+                    config={'displayModeBar': False,
+                            # 'queueLength': 0
+                            },
+                    className='plot'
+                ),
+                dcc.Graph(
+                    id='phi_perm_swirr',
+                    # config=dict(responsive=True),
+                    figure=figPermeabilityIrreducibleWater,
+                    config={'displayModeBar': False,
+                            # 'queueLength': 0
+                            },
+                    className='plot'
+                ),
+                dcc.Graph(
+                    id='error_dist',
+                    # config=dict(responsive=True),
+                    figure=fig_Dist_Perm,
+                    config={'displayModeBar': False,
+                            # 'queueLength': 0
+                            },
+                    className='plot'
+                ),
+
+                html.Div([
+                    dcc.Textarea(
+                        id='equationsText',
+                        value='perm=np.exp(0.01*phi**2.2-4.5)\nswirr=53/(k+0.025)**0.17',
+                        style={'width': '100%', 'height': 200},
+                    ),
+                    html.Button('Apply', id='applyEquations', n_clicks=0),
+                    html.Div(id='textarea-state-example-output', style={'whiteSpace': 'pre-line'})
+                ], id='text_equations')
+            ], id="rcal_analysis", className='rcal_box'),
+
+                # endregion
+                
+            
             html.Div([
-                # html.Label('Color'),
-                dcc.RadioItems(
-                    id='visualization_data2',
+                    # region Color_filter
+                    html.Div([
+                        # html.Label('Color'),
+                        dcc.RadioItems(
+                            id='visualization_data2',
 
-                    options=[
-                        {'label': 'All Data', 'value': 'All_Data'},
-                        {'label': 'Wells', 'value': wellColumnName},
-                        {'label': 'Zones', 'value': zonesColumnName},
-                        {'label': 'Researches', 'value': 'Research_type'},
-                    ],
-                    value='All_Data',
-                    labelStyle={'display': 'inline-block'}
+                            options=[
+                                {'label': 'All Data', 'value': 'All_Data'},
+                                {'label': 'Wells', 'value': wellColumnName},
+                                {'label': 'Zones', 'value': zonesColumnName},
+                                {'label': 'Researches', 'value': 'Research_type'},
+                            ],
+                            value='All_Data',
+                            labelStyle={'display': 'inline-block'}
+                        ),
+                    ], className='color_filter'),
+                    # endregion
+                    dcc.Graph(
+                        id='por_ff',
+                        # config=dict(responsive=True),
+                        figure=fig_Por_FF
+
+                    ),
+                    dcc.Graph(
+                        id='sw_ri',
+                        # config=dict(responsive=True),
+                        figure=fig_SW_RI
+                    ),
+                ], id='ff_ri_plots', className='container'),
+            
+            html.Div([
+                dcc.Graph(
+                    id='sw_cp',
+                    # config=dict(responsive=True),
+                    figure=fig_PC_SW,
+                    config={'displayModeBar': False,
+                            'responsive': False
+                            # 'queueLength': 0
+                            }
                 ),
-            ], className='color_filter'),
-            # endregion
-            dcc.Graph(
-                id='por_ff',
-                # config=dict(responsive=True),
-                figure=fig_Por_FF
 
-            ),
-            dcc.Graph(
-                id='sw_ri',
-                # config=dict(responsive=True),
-                figure=fig_SW_RI
-            ),
-        ], id='ff_ri_plots', className='container'),
-    
-    html.Div([
-        dcc.Graph(
-            id='sw_cp',
-            # config=dict(responsive=True),
-            figure=fig_PC_SW,
-            config={'displayModeBar': False,
-                    'responsive': False
-                    # 'queueLength': 0
-                    }
-        ),
-
-    ], id='capillary_model', className='container')
-
+            ], id='capillary_model', className='container')
+        ], className='workspace')
+    ], className='wrapper')
 ])
 
-
 @analysisDashApp.callback(
-    [Output('por_perm', 'figure'),
-     Output('perm_swirr', 'figure')],
+    [Output('phi_perm', 'figure'),
+     Output('phi_perm_swirr', 'figure')],
     [Input('visualization_data', 'value'),
      Input('applyEquations', 'n_clicks')],
     State('equationsText', 'value')
@@ -345,6 +351,7 @@ def update_rcal_graph(visual_data, n_clicks, equationsText):
                        ),
             showlegend=True,
             legend_title_text=visual_data,
+            
             margin={'l': 40, 'b': 40, 't': 40, 'r': 40},
             # margin={'l': 0, 'b': 0, 't': 40, 'r': 0},
             # margin=dict(l=20, b=20, t=40, r=20),
@@ -356,9 +363,9 @@ def update_rcal_graph(visual_data, n_clicks, equationsText):
 
 @analysisDashApp.callback(
 
-    Output('perm_calc_dist', 'figure'),
+    Output('error_dist', 'figure'),
     Input('applyEquations', 'n_clicks'),
-    [State('por_perm', 'figure'),
+    [State('phi_perm', 'figure'),
      State('equationsText', 'value')]
 )
 def update_dist_graph(n_clicks, figData, textEquation):
